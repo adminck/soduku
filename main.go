@@ -13,32 +13,9 @@ var (
 
 func GetBlock(index int, SoDoKu []int) *model.Set {
 	BlockVal := model.New()
-	Column := (index + 9) % 9
-	Row := int(math.Floor(float64((index+9)/9))) - 1
-	var row, col int
-	switch Row {
-	case 0, 1, 2:
-		row = 0
-		break
-	case 3, 4, 5:
-		row = 3
-		break
-	case 6, 7, 8:
-		row = 6
-		break
-
-	}
-	switch Column {
-	case 0, 1, 2:
-		col = 0
-		break
-	case 3, 4, 5:
-		col = 3
-		break
-	case 6, 7, 8:
-		col = 6
-		break
-	}
+	
+	row := (index / 9) / 3 * 3
+	col := (index % 9) / 3 * 3
 
 	for i := row; i < row+3; i++ {
 		for ii := col; ii < col+3; ii++ {
